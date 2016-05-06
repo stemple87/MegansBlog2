@@ -8,7 +8,7 @@ using MegansBlog2.Models;
 namespace MegansBlog2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20160506200752_Initial")]
+    [Migration("20160506220242_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
