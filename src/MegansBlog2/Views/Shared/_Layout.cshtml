@@ -1,7 +1,8 @@
-﻿
-@using System.Security.Claims
-<!DOCTYPE html>
+﻿@model IEnumerable<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>
 
+@using System.Security.Claims
+
+<!DOCTYPE html>
 <html>
 <head>
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -12,11 +13,7 @@
     <link rel="stylesheet" type="text/css" href="~/css/styles.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewBag.Title</title>
-    
 </head>
-
-
-
 <body>
     <div id="navbar" class="navbar-fixed">
         <ul id="dropdown1" class="dropdown-content">
@@ -27,11 +24,10 @@
         </ul>
         <nav>
             <div class="nav-wrapper">
-                <a href="#!" class="brand-logo">Megan's Blog 2</a>
-                <span class="right ">
+                <a href="#!" class="brand-logo">@Html.ActionLink("Megan's Blog 2", "Index", "Account")</a>
+                <div class="right ">
                     @if (User.IsSignedIn())
                     {
-                        
 
                         @using (Html.BeginForm("LogOff", "Account"))
                         {
@@ -40,14 +36,24 @@
 
                         <p>Signed in as @User.GetUserName()</p>
 
+                        @if (User.IsInRole("Admin"))
+                        {
+
+                            @Html.ActionLink("User Roles", "index", "Roles")
+
+                        }
+
+                       
+
                     }
                     else
                     {
                         <span>@Html.ActionLink("Register", "Register")</span>
                         <span>@Html.ActionLink("Log in", "Login")</span>
                     }
+                   
                     
-                </span>
+                </div>
             </div>
         </nav>
     </div>
