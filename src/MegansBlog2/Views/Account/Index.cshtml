@@ -3,20 +3,3 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-    @using System.Security.Claims
-
-    <h3>Megan's Blog 2</h3>
-    <hr />
-    @if (User.IsSignedIn())
-    {
-        <p>Hello @User.GetUserName()!</p>
-        @using (Html.BeginForm("LogOff", "Account"))
-        {
-            <input type="submit" class="btn btn-default" value="Log out" />
-        }
-    }
-    else
-    {
-        <p>@Html.ActionLink("Register", "Register")</p>
-        <p>@Html.ActionLink("Log in", "Login")</p>
-    }
